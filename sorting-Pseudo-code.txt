@@ -1,0 +1,70 @@
+/* eslint-disable no-undef */
+This program will allow the user to sort 10 GB array integers
+with 1 GB RAM and 214 GB ROM.
+
+
+begin
+    main function
+         
+       Input the array values
+
+       Pass array value to the splitArrayIntoChunks function and print
+       the result to the user
+end
+
+const splitArrayIntoChunks = (Argument one) => {
+begin
+    Split the Argument one(array) into 10 so it will be
+    10 GB / 1 GB = 10 chunks. 
+    FOR counter=0 TO chunks length counter DO
+      Pass index of chunks to the quickSort function and store the sorted chunks into array 
+    ENDFOR
+    Pass all sorted chunks to the kmerge function
+    return the final array which has been returned from kmerge function;
+end
+}
+
+const kmerge = (Argument one) => {
+begin
+    Load 10 items from each chunk into main memory. 
+    Create a priority queue from 10 items
+    Iterate through priority key on the priority queue
+    Sort the 10 items by comparing it with the priority key.
+    Pass the 10 items to nextPriorityNumberIn function
+
+    WHILE priority queue not empty
+        Sort the queue by comparing it with the priority key.
+        Store data as smallest value into final array
+        Assign it to the final array and empty it. 
+        IF 10 items not depleted
+            Sort the queue by comparing it with the priority key.
+            Pass the 10 items to nextPriorityNumberIn function
+        Pass Argument one to kmerge function for another 10 items until all the chunks has been sorted.
+    return The final array
+end
+}
+
+function nextPriorityNumberIn(Argument One){
+begin
+    Using the first index value of Argument One as priority key
+    return priority key
+end
+}
+
+function quickSort(Argument one) {
+begin
+    Find a pivot value from Argument one
+        FOR (loop till all the Argument one lengths) {
+            IF Argument one less than or equal to pivot value
+                Push data in array one.
+            ELSE 
+                Push data in array two.
+        }
+        ENDFOR
+    Send the array one to the quickSort function
+    Send the array two to the quickSort function
+    Concat array one, pivot value and array two into final array   
+    return the final array
+end
+}
+  

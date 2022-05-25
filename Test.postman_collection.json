@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "d12b6f38-32a1-4228-b764-8b939d7591c6",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "localhost:8500/user/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Mahima\",\n    \"email\":\"mahima@gmail.com\",\n    \"password\":\"111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8500/user/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8500/user/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"mahima@gmail.com\",\n    \"password\":\"111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8500/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8500/user/logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"mahima@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8500/user/logout"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "news",
+			"item": [
+				{
+					"name": "localhost:8500/news/news?search=bitcoin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjhjODczZmJhN2Y4MjZhNWZkMWZiZjIiLCJ1c2VybmFtZSI6IjQ1NDQ3NzMyIiwicGhvbmUiOiIiLCJpYXQiOjE2NTMzODEzMDEsImV4cCI6MTgxMTA2MTMwMX0.JEWqOLvyb6Na801YW2VEDe2OGa0XN5_dlx7DFSfm26k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8500/news/news?search=bitcoin",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"news",
+								"news"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "bitcoin"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "weather",
+			"item": [
+				{
+					"name": "localhost:8500/weather/weather?location=surat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8500/weather/weather?location=surat",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"weather",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "surat"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
