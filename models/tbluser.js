@@ -1,6 +1,6 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema;
-
+var bcrypt = require("bcrypt");
 const schemaOptions = {
   timestamps: {
     createdAt: "created_at",
@@ -42,6 +42,12 @@ let tbluserSchema = new Schema(
   },
   schemaOptions
 );
+tbluserSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+  this.password = await bcrypt.hash(this.password, 5);
+});
 
 var tbluser = mongoose.model("tbluser", tbluserSchema);
 module.exports = tbluser;

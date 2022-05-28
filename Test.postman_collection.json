@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d12b6f38-32a1-4228-b764-8b939d7591c6",
+		"_postman_id": "bd7b980b-13b0-4af2-8906-fca8cb78b01f",
 		"name": "Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -9,7 +9,7 @@
 			"name": "user",
 			"item": [
 				{
-					"name": "localhost:8500/user/signup",
+					"name": "userSignup",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -22,12 +22,12 @@
 								}
 							}
 						},
-						"url": "localhost:8500/user/signup"
+						"url": "localhost:8500/device/v1/user/signup"
 					},
 					"response": []
 				},
 				{
-					"name": "localhost:8500/user/login",
+					"name": "userLogin",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -40,12 +40,12 @@
 								}
 							}
 						},
-						"url": "localhost:8500/user/login"
+						"url": "localhost:8500/device/v1/user/login"
 					},
 					"response": []
 				},
 				{
-					"name": "localhost:8500/user/logout",
+					"name": "userLogout",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -58,7 +58,7 @@
 								}
 							}
 						},
-						"url": "localhost:8500/user/logout"
+						"url": "localhost:8500/device/v1/user/logout"
 					},
 					"response": []
 				}
@@ -68,23 +68,25 @@
 			"name": "news",
 			"item": [
 				{
-					"name": "localhost:8500/news/news?search=bitcoin",
+					"name": "getNews",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjhjODczZmJhN2Y4MjZhNWZkMWZiZjIiLCJ1c2VybmFtZSI6IjQ1NDQ3NzMyIiwicGhvbmUiOiIiLCJpYXQiOjE2NTMzODEzMDEsImV4cCI6MTgxMTA2MTMwMX0.JEWqOLvyb6Na801YW2VEDe2OGa0XN5_dlx7DFSfm26k",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjhjODczZmJhN2Y4MjZhNWZkMWZiZjIiLCJ1c2VybmFtZSI6IjQ1NDQ3NzMyIiwicGhvbmUiOiIiLCJpYXQiOjE2NTM3Mjg4OTgsImV4cCI6MTY1NDE2MDg5OH0.6k6c4hWYclEkxDduXc7r5eMF9zZDaPmhp6ZJSwAUFpg",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:8500/news/news?search=bitcoin",
+							"raw": "localhost:8500/device/v1/news/news?search=bitcoin",
 							"host": [
 								"localhost"
 							],
 							"port": "8500",
 							"path": [
+								"device",
+								"v1",
 								"news",
 								"news"
 							],
@@ -104,27 +106,11 @@
 			"name": "weather",
 			"item": [
 				{
-					"name": "localhost:8500/weather/weather?location=surat",
+					"name": "getWeather",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "localhost:8500/weather/weather?location=surat",
-							"host": [
-								"localhost"
-							],
-							"port": "8500",
-							"path": [
-								"weather",
-								"weather"
-							],
-							"query": [
-								{
-									"key": "location",
-									"value": "surat"
-								}
-							]
-						}
+						"url": "localhost:8500/device/v1/weather/weather"
 					},
 					"response": []
 				}

@@ -1,17 +1,14 @@
-var express = require('express');
-require('dotenv').config();
-var router = express.Router();
 const axios = require('axios');
 const _ = require('underscore');
-var Auth = require('../middleware/auth');
+const message = require("../config/message");
 
-router.get('/news', Auth.verifyToken, async function (req, res) {
+exports.news = async function (req, res) {
     var objParam = req.query;
-    let apiUrl = process.env.newsApi;
+    let apiUrl = process.env.NEWS_API;
     if (objParam.search) {
         apiUrl += "?q=" + objParam.search
     }
-    apiUrl += "&apiKey=" + process.env.newsApiKey
+    apiUrl += "&apiKey=" + process.env.NEWS_APIKEY
     await axios.get(apiUrl).then(response => {
         let finalResp = []
         _.each(response.data.articles, (newsData) => {
@@ -22,11 +19,7 @@ router.get('/news', Auth.verifyToken, async function (req, res) {
             finalResp.push(data);
           });
         res.status(200).json({count:response.data.totalResults,data:finalResp});
-    }).catch(error => {
-        res.status(500).json({
-            msg: error
-        });
+    }).catch(() => {
+        res.status(500).json(message.message.SERVER_ERROR);
     });
-})
-
-module.exports = router;
+};

@@ -1,6 +1,5 @@
 "use strict";
 var jwt = require('jsonwebtoken');
-var TokenKey = process.env.tokenkey;
 var ObjectId = require("mongodb").ObjectID;
 
 const User = require("../models/tbluser");
@@ -12,7 +11,7 @@ var verifyToken = function (req, res, next) {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
         req.token = bearerToken;
-        jwt.verify(req.token, TokenKey, (err, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (err, authData) => {
             if (err) {
                 res.status(401).json(message.message.UNAUTHORIZED);
             } else {

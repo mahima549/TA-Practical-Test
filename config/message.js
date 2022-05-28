@@ -19,21 +19,25 @@ module.exports = {
       code: "UNPROCESSABLE_ENTITY",
       status: 422,
     },
+    EMAIL_INVALID: {
+      message: "Email Id is invalid.",
+      code: "UNPROCESSABLE_ENTITY",
+      status: 422,
+    },
+    PASSWORD_INVALID: {
+      message: "Password is invalid.",
+      code: "UNPROCESSABLE_ENTITY",
+      status: 422,
+    },
     EMAIL_PASSWORD_REQUIRED: {
       message: "Email Id and password is required.",
       code: "UNPROCESSABLE_ENTITY",
       status: 422,
     },
-    IS_DUPLICATE: {
-      message: "already exists.",
+    EMAIL_DUPLICATE: {
+      message: "Email Id already exists.",
       code: "UNPROCESSABLE_ENTITY",
       status: 422,
-    },
-    
-    RECORD_NOT_FOUND: {
-      code: "E_NOT_FOUND",
-      message: "Record not found",
-      status: 404,
     },
     OK: {
       code: "OK",
@@ -59,11 +63,6 @@ module.exports = {
     USER_REGISTERED: {
       code: "OK",
       message: "You have registered successfully.",
-      status: 200,
-    },
-    USERNAME_REGISTERED: {
-      code: "E_DUPLICATE",
-      message: "Username is already taken. Try another.",
       status: 200,
     },
     LOGIN: {

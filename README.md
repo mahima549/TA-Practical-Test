@@ -12,3 +12,5 @@ run npm test to run the core unit testing of All the Apis.
     -  Weather api
 
 import Test.postman_collection.json file for documentation of API in Postman
+
+ApiDocumentation.pdf contains all the api details.

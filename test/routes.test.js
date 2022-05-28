@@ -1,74 +1,81 @@
-const request = require('supertest')
-const app = require('../server')
-var mongoose = require("mongoose");
 
-beforeAll(done => {
-    mongoose.connect(process.env.mongouri, {
-    useNewUrlParser: true, 
-    useCreateIndex: true 
-})
-    done()
+const request = require('supertest')
+const app = require("../app");
+const mongoose = require("mongoose");
+
+beforeAll((done) => {
+  mongoose
+  .connect("mongodb+srv://admin:admin@cluster0.gx5oq3x.mongodb.net/practical_test?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
+  .then(() => {
+    console.log(`mongo connected`);
+  }); 
+  done();
+},5000);
+
 describe('Tasks', () => {
-describe('Post User', () => {
+
+  describe('Post User', () => {
         it('should create a new user', async () => {
         const res = await request(app)
-          .post('/user/signup')
+          .post('/device/v1/user/signup')
           .send({
             "name":"Mahima",
-            "email":"ab111c@gmail1.com",
+            "email":"mahima@gmail1.com",
             "password":"111"
         })
-        console.log("res 1",res)
         expect(res.statusCode).toEqual(200)
         expect(res.body).toHaveProperty('data')
       })
-})
-describe('Login User', () => {
+  });
+
+  describe('Login User', () => {
 
     it('should get an existing user', async () => {
       const res = await request(app)
-        .post('/user/login')
+        .post('/device/v1/user/login')
         .send({
-          "email":"abc@gmail.com",
+          "email":"mahima@gmail.com",
           "password":"111"
       })
       expect(res.statusCode).toEqual(200)
       expect(res.body).toHaveProperty('data')
     })
 
-  })
+  });
 
-describe('Logout User', () => {
+  describe('Logout User', () => {
 
     it('should get an existing user', async () => {
       const res = await request(app)
-        .post('/user/logout')
+        .post('/device/v1/user/logout')
         .send({
-          "email":"abc@gmail.com"
+          "email":"mahima@gmail.com"
       })
       expect(res.statusCode).toEqual(200)
     })
 
-  })
+  });
 
   describe('Fetch News', () => {
     it('should get news', async () => {
       const res = await request(app)
-        .get('/news/news?search=india').send()
+        .get('/device/v1/news/news?search=india').send()
       expect(res.statusCode).toEqual(200)
       expect(res.body).toHaveProperty('data')
     })
-})
-describe('Fetch Last 5 Days Weather Report', () => {
+  });
 
+  describe('Fetch Last 5 Days Weather Report', () => {
     it('should get weather report', async () => {
       const res = await request(app)
-        .get('/weather/weather?location=surat')
-        .send()
+        .get('/device/v1/weather/weather?location=surat').send()
       expect(res.statusCode).toEqual(200)
       expect(res.body).toHaveProperty('data')
     })
-})
+  });
 
-})
+});
